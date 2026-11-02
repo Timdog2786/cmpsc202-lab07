@@ -17,7 +17,7 @@ Suppose we're going hiking. We have items $1, \ldots, n$ that we could pack in m
 
 **Question:** Which of the three problem variations can be solved using the dynamic programming approaches we've studied in lecture? Explain your reasoning.
 
-*Your Answer:*
+Problem 1 and problem 2, can be sloved as a you can try every soultion, and except the ones where you already put in the item. You can also slove number 3 but the answer would not be equal to maximium value for the weight.
 
 ## Part 2: The Naive Recursive Algorithm
 
@@ -40,7 +40,7 @@ Function MaxValue(W):
 
 **Question:** Which of the three problem variations (1, 2, or 3) does this algorithm solve? How do you know? Explain your reasoning.
 
-*Your Answer:*
+This sloves variation 2, as it trys to put every item into the bag at every weight.
 
 ## Part 3: Recursion Tree
 
@@ -52,15 +52,15 @@ Consider the following simple example:
 
 **Question:** Draw the full recursion tree for `MaxValue(3)` using the example above. Label the remaining capacity at each node and indicate which item is chosen along each branch.
 
-*Your Answer (take a picture and upload it):*
+![test](branches.png)
 
 
 ## Part 4: Recurrence Relation
 
 **Question:** Derive a mathematical recurrence relation for $OPT(W)$, the maximum value you can pack into a knapsack of capacity $W$, based on the naive recursive algorithm. Be sure to state your base case(s) and explain how you arrived at your formula.
 
-*Your Answer:*
-
+$OPT(W)$ = if w == 0 return 0; 
+           if w > 0; max from 1<= i <=w{v_i + OPT(W-w_i)}
 
 ## Part 5: Bottom-Up Dynamic Programming
 
@@ -70,19 +70,20 @@ Instead of using the slow recursive approach, we can build a table bottom-up.
 
 | Capacity ($W$) | Optimal Value ($OPT$) | Item Chosen |
 |:---:|:---|:---|
-| **0** | | |
-| **1** | | |
-| **2** | | |
-| **3** | | |
-| **4** | | |
-| **5** | | |
-| **6** | | |
+| **0** | 0 | 0 |
+| **1** | 3 | 3 |
+| **2** | 6 | 3 |
+| **3** | 9 | 3 |
+| **4** | 12 | 3 |
+| **5** | 15 | 3 |
+| **6** | 18 | 3 |
 
 *Explain how you calculated the row for $W=6$*
 
+I calulated row 6 by seeing that out of the max item weight of 2, the most optimal soultion was to pack item 3 twice, as that reults in a value of +6.
 
 ## Part 6: Traceback
 
 **Question:** Using the "Item Chosen" column from the table you completed in Part 5, trace back to find the exact quantities of each item to pack that maximize the value. What is the final optimal packing configuration for $W=6$ and the maximum value?
 
-*Your Answer:*
+The final packing configuration is to pack item 3, 6 times.
